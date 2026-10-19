@@ -9,7 +9,7 @@ body, ul, li, p {
 }
 
 body {
-    margin-bottom: 100px;
+    margin-bottom: 100px; /* adiciona espaço inferior para o conteúdo, para não ficar colado no rodapé */
 }
 
 a {
@@ -19,7 +19,7 @@ a {
 
 h1 {
     text-align: center;
-    margin-top: 100px
+    margin-top: 100px; /* adiciona espaço superior para o título, para não ficar colado no conteúdo acima */
 }
 
 img {
@@ -52,6 +52,21 @@ img {
     
 }
 
+
+
+/* 1° ALTERÇÃO FEITA POR MIM */
+@media screen and (max-width: 680px) {
+	.menu {
+		margin-right: -15px;
+	}
+
+   	.logo {
+		margin-left: 15px;
+    }
+}
+
+
+
 /* CSS FLEXBOX 1 */
 
 .flex {
@@ -70,6 +85,16 @@ img {
     200px /* flex-basis (tamanho base) */;
     margin: 10px;
 }
+
+
+/* 2° ALTERÇÃO FEITA POR MIM */
+@media screen and (max-width: 680px) {
+	.flex > div {
+    		flex-basis: 180px;
+	}
+}
+
+
 
 /* CSS GRID 1 */
 
@@ -128,7 +153,6 @@ img {
 .sidebar > div {
     margin-bottom: 10px;
 }
-
 
 
 @media (max-width: 600px) {
