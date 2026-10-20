@@ -10,17 +10,17 @@ body, ul, li, p {
 
 body {
     margin-bottom: 100px; /* adiciona espaço inferior para o conteúdo, para não ficar colado no rodapé */
+
+    /* OBS: Se não for especificado o "display" do <body>, o padrão é "block", ou seja, ocupará toda a largura disponível, sendo exibido em bloco, com  os itens sendo posicionados em ordem de cascata, de cima para baixo, um, e depois o outro */
 }
 
+/* LINK */
 a {
     text-decoration: none;
     color: white;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 100px; /* adiciona espaço superior para o título, para não ficar colado no conteúdo acima */
-}
+
 
 img {
     max-width: 100%;
@@ -52,9 +52,15 @@ img {
     
 }
 
+/* TITULOS DAS SECTIONS (TIPOS DE LAYOUT) */
+h1 {
+    text-align: center;
+    margin-top: 100px; /* adiciona espaço superior para o título, para não ficar colado no conteúdo acima */
+}
 
 
-/* 1° ALTERÇÃO FEITA POR MIM */
+
+/* 1° ALTERÇÃO MINHA - Alinhamento dos itens do header no responsivo */
 @media screen and (max-width: 680px) {
 	.menu {
 		margin-right: -15px;
@@ -87,7 +93,8 @@ img {
 }
 
 
-/* 2° ALTERÇÃO FEITA POR MIM */
+
+/* 2° ALTERÇÃO MINHA - Deixar duas colunas em pequenos dispositivos (responsivo) */
 @media screen and (max-width: 680px) {
 	.flex > div {
     		flex-basis: 180px;
@@ -99,29 +106,43 @@ img {
 /* CSS GRID 1 */
 
 .grid1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 800px;
+    display: grid; 
+
+    grid-template-columns: repeat(3, 1fr); 
+    /* cria 3 colunas de largura igual */
+
+    max-width: 800px; /* limita a largura máxima do grid, mesmo que, em telas maiores, ele só ocupará a largura especificada */
+
     padding: 10px;
-    margin: 0 auto;
-    grid-gap: 20px;
+
+    margin: 0 auto; /* Zero em cima e embaixo e "auto", lado esquerdo e direito, centralizando os itens na horizontal */
+
+    grid-gap: 20px; /* espaçamento entre os itens do grid */
 }
 
 /* AQUI COMEÇA A MAGICA */
 
 .grid1 > div:nth-child(n + 4) {
+    /* Modificará o estilo para os itens a partir do quarto, ou seja, os três primeiros itens não serão afetados, aferatará a partir do 4, o anuncio */
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns: 1fr 1fr; /* Cria 2 colunas de largura igual */
+
     grid-gap: 10px;
-    align-items: center;
+    align-items: center; /* Alinha os itens, da div(ou o conteiner, verticalmente, ao centro */
 }
 
 .grid1 > div.anuncio {
-    grid-column: 1;
-    grid-row: 2 / 5;
-    display: block; /* remove o grid interno para o anúncio */
+    grid-column: 1; /* Posiciona o anuncio na primeira coluna, do grid */
+
+    grid-row: 2 / 5; /* Aqui informa que o anuncio irá ocupar a partir da 2° linha, logo imediatamente abaixo da 1° linha de imamgens, e que contará com um total de: 5 linhas.
+        O que fará o restante das imagens, ocupar o espaço entre a 2° coluna e a 3° colunas (total de 3 especificada la em cima) e da 2° até a 5° Linhas, como configurado acima*/
+
+    display: block; /* remove o grid interno para o anúncio, ou seja, a legenda não mais ficará ao lado da imagem, mas sim, abaixo */
 } 
 
+/* RESPONSIVIDADE */
 @media (max-width: 600px) {
 .grid1 {
     grid-template-columns: repeat(2, 1fr); /* reduz o número de colunas para 2 */
@@ -143,18 +164,25 @@ img {
 
 .grid2 {
     display: grid;
-    grid-template-columns: 1fr 200px;
+
+    grid-template-columns: 1fr 200px; /* Especifica 2 colunas, onde a primeira tem largura flexível e a segunda tem largura fixa de 200px */
+
     grid-gap: 20px;
+
     max-width: 800px;
-    padding: 10px;
     margin: 0 auto;
+    /* Impedem que o grid ultrapasse a largura máxima determinada e o margin centraliza horizontalmente */
+
+    padding: 10px;
 }
 
 .sidebar > div {
+/* São os itens que ficam ao lado do video */
     margin-bottom: 10px;
 }
 
 
+/* RESPONSIVIDADE */
 @media (max-width: 600px) {
     .grid2 {
     display: grid;
@@ -181,7 +209,9 @@ img {
 
     .grid3 {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas de largura flexível */
+
         grid-gap: 20px;
         margin: 0 auto;
         max-width: 800px;
@@ -189,7 +219,7 @@ img {
     }
 
     .grid3-item:nth-child(1) {
-        grid-row: 1 / 3; /* ocupa as duas linhas */
+        grid-row: 1 / 3; /* ocupa desde a primeira linha, de um total de 3 criadas, para todos os itens */
     }
 
     .grid3-item {
@@ -198,15 +228,22 @@ img {
     
     .grid3-item img {
         grid-column: 1; /* ocupa a primeira coluna */
-        grid-row: 1 / 3; /* ocupa as duas linhas */
+
+        grid-row: 1 / 3; /* ocupa desde a primeira linha, de um total de 3 criadas, para todos os itens */
+
         align-self: end; /* alinha a imagem na parte inferior da célula */
     }
 
+    /* LEGENDAS DA SECTION 3 */
     .grid3-item p {
-         background-color: rgba(0, 0, 0, 0.6);
+         background-color: rgba(0, 0, 0, 0.6); /* fundo semitransparente */
+
          padding: 10px;
          color: white;
+
          grid-column: 1; /* ocupa a primeira coluna */
+
         grid-row: 2; /* ocupa a segunda linha */
+
         align-self: end; /* alinha a imagem na parte inferior da célula */
     }
