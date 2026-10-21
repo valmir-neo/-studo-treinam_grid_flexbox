@@ -154,55 +154,124 @@ h1 {
 
 .grid1>div.anuncio {
     grid-column: 1;
-    /* Posiciona o anuncio na primeira coluna, do grid */
+    /* Posiciona o anuncio, SEMPRE na primeira coluna, do grid, e continuara assim no responsivo, se n for alterada */
 
     grid-row: 2 / 5;
     /* Aqui informa que o anuncio irá ocupar a partir da 2° linha, logo imediatamente abaixo da 1° linha de imamgens, e que contará com um total de: 5 linhas.
         O que fará o restante das imagens, ocupar o espaço entre a 2° coluna e a 3° colunas (total de 3 especificada la em cima) e da 2° até a 5° Linhas, como configurado acima*/
 
     display: block;
-    /* remove o grid interno para o anúncio, ou seja, a legenda não mais ficará ao lado da imagem, mas sim, abaixo */
+    /* Alinha a imagem e a legenda verticalmente */
 }
 
-/* RESPONSIVIDADE */
+
+/* RESPONSIVIDADE DA SECTION GRID 1 (100% via CSS) */
+@media (max-width: 600px) {
+    .grid1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+        /* Definimos explicitamente as linhas para termos controle total do scroll */
+        grid-template-rows: auto auto 1fr; 
+        grid-gap: 20px;
+    }
+
+    /* 1º e 2º itens: Ficam na primeira linha (automáticos do grid) */
+    .grid1 > div:nth-child(1),
+    .grid1 > div:nth-child(2) {
+        display: block;
+        grid-row: 1;
+    }
+
+
+    /* O PULO DO GATO: Agrupamos todos os itens A PARTIR do 3º (ou 4º) 
+       para ocuparem a Coluna 2 e terem a barra de rolagem vertical unificada */
+    .grid1 > div:nth-child(n + 3) {
+        display: grid;
+        
+        
+        
+        /* Se quiser que o 3º item também entre no scroll, use (n + 3). 
+           Se quiser que comece a partir do 4º, use (n + 4) */
+        grid-column: 2;
+        grid-row: 2; /* Ficam na mesma altura do anúncio, gerando as 2 colunas */
+        
+        /* Configuração da barra de rolagem vertical */
+        max-height: 320px;   /* Altura máxima da caixa de rolagem */
+        overflow-y: auto;    /* Ativa o scroll vertical */
+        overflow-x: hidden;  /* Evita scroll horizontal */
+        padding-right: 5px;  /* Espaço para a barra não colar nas imagens */
+    }
+
+    /* Ajuste visual para os itens que ficam dentro do bloco de rolagem */
+    .grid1 > div:nth-child(n + 3) > div {
+        margin-bottom: 15px; /* Espaço entre cada imagem/legenda na rolagem */
+    }
+
+ /* O Anúncio: Fica estritamente na Coluna 1, Linha 2 */
+    .grid1 > div.anuncio {
+        grid-column: 1;
+        grid-row: 2;
+        display: block;
+    }
+
+}
+
+
+
+
+
+/* RESPONSIVIDADE 
 @media (max-width: 600px) {
     .grid1 {
         grid-template-columns: repeat(2, 1fr);
-        /* reduz o número de colunas para 2 */
+        /* reduz o número de colunas para 2 
     }
 
-    .grid1>div:nth-child(n + 4) {
+    .grid1>div:nth-child(n + 3) {
         display: block;
-        /* remove o grid interno, ou seja, os elementos (imagem e legnda), deixam de ficarem lado a lado, para ficarem posicionadas uma acima da outra, no layout responsivo. para os itens a partir do 4º, modificando a estlização desktop. */
+        /* Alinha a imagem e a legenda verticalmente 
+
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 5px;
+        margin: 10px 0;
+
+
+
     }
 
     .grid1>div.anuncio {
         grid-column: auto;
         grid-row: 2/9;
         order: -1;
-        /* move o anúncio para o início da lista */
+        /* move o anúncio para o início da lista 
     }
 
+
+
+    SUGESTÃO COM SIDEBAR
+
+    /*
     .sidebar1 {
 		max-height: 300px;
         overflow-y: auto;
         overflow-x: hidden;
         padding-right: 5px;
+       
         /* display: flex;
 		flex-direction: column;
-		overflow: scroll */
+		overflow: scroll 
 	}
 
     .sidebar1>div {
-		/* flex: 1 0 177px; */
+		/* flex: 1 0 177px; 
 		margin: 10px 0;	
 	}
 
 
-
-
 }
-
+*/
 
 
 
