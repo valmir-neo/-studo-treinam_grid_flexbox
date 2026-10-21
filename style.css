@@ -183,10 +183,24 @@ h1 {
         /* move o anúncio para o início da lista */
     }
 
+    .sidebar1 {
+		max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 5px;
+        /* display: flex;
+		flex-direction: column;
+		overflow: scroll */
+	}
+
+    .sidebar1>div {
+		/* flex: 1 0 177px; */
+		margin: 10px 0;	
+	}
 
 
 
-    
+
 }
 
 
