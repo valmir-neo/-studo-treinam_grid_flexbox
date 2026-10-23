@@ -132,14 +132,14 @@ img,
 
 /* AQUI COMEÇA A MINHA MAGICA */
 
-.sidebar1 > div:nth-child(n + 4) {
+.sidebar1>div:nth-child(n + 4) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
     align-items: center;
 }
 
-.sidebar1 > div.anuncio {
+.sidebar1>div.anuncio {
     grid-column: 1;
     grid-row: 2 / 5;
     display: block;
@@ -148,18 +148,42 @@ img,
 @media (max-width: 600px) {
 
     .sidebar1 {
-    grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    
+
+ .sidebar1:nth-child(n + 3) { 
+	
+	flex-direction: column;
+	max-height: 320px;
+	overflow-y: scroll;
+ 	overflow-x: hidden;		
 }
 
-.sidebar1 > div:nth-child(n + 4) {
-    display: block; 
-}
+    .sidebar1>div {
+        flex: 1 1 177px;
+        margin: 10px 0;
+    }
 
-.sidebar1 > div.anuncio {
-    grid-column: 1;
-    grid-row: 2;
- 
-}
+    .sidebar1>div:nth-child(n + 3) {
+        grid-column: 2;
+        grid-row: 2;
+        max-height: 250px;
+        display: block;
+        padding-right: 5px;
+        margin-bottom: 15px;
+        
+    }
+
+   
+    
+
+    .sidebar1>div.anuncio {
+        grid-column: 1;
+        grid-row: 2;
+
+    }
 
 }
 
