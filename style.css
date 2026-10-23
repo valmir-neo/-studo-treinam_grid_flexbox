@@ -112,18 +112,38 @@ img,
 /* CSS GRID 1 */
 
 .grid1 {
-    display: grid;
-    /* grid-template-columns: repeat(2, 250px); */
-    
+    display: block;
 
+    /* grid-template-columns: repeat(2, 250px); 
+    max-width: 800px;
+    padding: 10px;
+    margin: 0 auto;
+    grid-gap: 20px;*/
+}
+
+.sidebar1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     max-width: 800px;
     padding: 10px;
     margin: 0 auto;
     grid-gap: 20px;
 }
 
+/* AQUI COMEÇA A MINHA MAGICA */
 
+.sidebar1 > div:nth-child(n + 4) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
 
+.sidebar1 > div.anuncio {
+    grid-column: 1;
+    grid-row: 2 / 5;
+    display: block;
+}
 
 
 
@@ -137,6 +157,7 @@ img,
     margin: 0 auto;
     grid-gap: 20px;
 }
+
 
 AQUI COMEÇA A MAGICA
 
@@ -153,9 +174,17 @@ AQUI COMEÇA A MAGICA
     display: block; /* Coloca os itens internos do anúncio em bloco verticalmente, para que ocupem toda a largura(horizontalmente) da célula do grid.
 } 
 
+
 @media (max-width: 600px) {
 .grid1 {
     grid-template-columns: repeat(2, 1fr); /* reduz o número de colunas para 2 
+}
+
+.sidebar1
+
+@media (max-width: 600px) {
+.sidebar1 {
+    grid-template-columns: repeat(2, 1fr); 
 }
 
 .grid1 > div:nth-child(n + 4) {
