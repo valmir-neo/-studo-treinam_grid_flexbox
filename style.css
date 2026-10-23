@@ -145,7 +145,23 @@ img,
     display: block;
 }
 
+@media (max-width: 600px) {
 
+    .sidebar1 {
+    grid-template-columns: repeat(2, 1fr); 
+}
+
+.sidebar1 > div:nth-child(n + 4) {
+    display: block; 
+}
+
+.sidebar1 > div.anuncio {
+    grid-column: 1;
+    grid-row: 2;
+ 
+}
+
+}
 
 /* ***ORIGINAL*** 
 
@@ -182,19 +198,22 @@ AQUI COMEÇA A MAGICA
 
 .sidebar1
 
-@media (max-width: 600px) {
-.sidebar1 {
-    grid-template-columns: repeat(2, 1fr); 
-}
 
 .grid1 > div:nth-child(n + 4) {
     display: block; /* remove o grid interno para os itens a partir do 4º 
 }
 
+
 .grid1 > div.anuncio {
     grid-column: auto;
     grid-row: auto;
     order: -1; /* move o anúncio para o início da lista 
+}
+
+.sidebar1 > div.anuncio {
+    grid-column: auto;
+    grid-row: auto;
+    order: -1;
 }
 
 }
