@@ -145,7 +145,61 @@ img,
     display: block;
 }
 
+
 @media (max-width: 600px) {
+
+    /* 1. Transforma a sidebar em um grid de 2 colunas no celular */
+    .sidebar1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+    }
+
+    /* Reseta o comportamento de grid interno global no mobile para evitar conflitos */
+    .sidebar1 > div:nth-child(n + 4) {
+        display: block; 
+    }
+
+
+    /* 2. As duas primeiras imagens ficam na 1ª linha, lado a lado */
+    .sidebar1 > div:nth-child(1),
+    .sidebar1 > div:nth-child(2) {
+        grid-column: span 1;
+        grid-row: 1;
+        display: block;
+    }
+
+    /* 3. O Anúncio fica travado na Coluna 1, Linha 2 */
+    .sidebar1 > div.anuncio {
+        grid-column: 1;
+        grid-row: 2;
+        display: block;
+    }
+
+  /* O CONTÊINER DE SCROLL (Aplica-se SOMENTE DO 3º ITEM EM DIANTE, EXCLUINDO O ANÚNCIO) 
+       Isso garante que o desktop NÃO seja afetado por essa regra de scroll! */
+    .sidebar1 > div:nth-child(n + 3):not(.anuncio) {
+        grid-column: 2;
+        grid-row: 2;
+        max-height: 240px;   /* Altura exata para caber apenas 2 divs empilhadas */
+        overflow-y: auto;    /* Ativa o scroll vertical */
+        overflow-x: hidden;  /* Esconde o scroll horizontal */
+        padding-right: 5px;  
+        display: block;      
+    }
+
+    /* Espaçamento entre cada item dentro do scroll */
+    .sidebar1 > div:nth-child(n + 3):not(.anuncio) > div {
+        margin-bottom: 5px;
+    }
+}
+
+
+
+
+/* MEDIA QUERY MINHA */
+
+/* @media (max-width: 600px) {
 
     .sidebar1 {
         grid-template-columns: repeat(2, 1fr);
@@ -176,16 +230,13 @@ img,
         
     }
 
-   
-    
-
     .sidebar1>div.anuncio {
         grid-column: 1;
         grid-row: 2;
 
     }
 
-}
+} */
 
 /* ***ORIGINAL*** 
 
