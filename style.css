@@ -132,16 +132,32 @@ img,
 
 /* AQUI COMEÇA A MINHA MAGICA */
 
-.sidebar1>div:nth-child(n + 4) {
+
+.sidebar1>div:nth-child(1),
+.sidebar1>div:nth-child(2),
+.sidebar1>div:nth-child(4)>div:nth-child(1) {
+    grid-column: span 1;
+    grid-row: 1;
+    display: block;
+}
+
+.sidebar1>div:nth-child(4)>div:nth-child(n + 2) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
     align-items: center;
 }
 
+
+
+
+
+
+
+
 .sidebar1>div.anuncio {
     grid-column: 1;
-    grid-row: 2 / 5;
+    grid-row: 2;
     display: block;
 }
 
@@ -155,144 +171,51 @@ img,
         grid-gap: 15px;
     }
 
-    /* Reseta o comportamento de grid interno global no mobile para evitar conflitos */
-    .sidebar1 > div:nth-child(n + 4) {
-        display: block; 
+    /* Reseta o comportamento de grid interno global, DO CONTEINER "scroll-column", n4, no mobile para evitar conflitos */
+    .sidebar1>div:nth-child(n + 4) {
+        display: block;
     }
 
 
     /* 2. As duas primeiras imagens ficam na 1ª linha, lado a lado */
-    .sidebar1 > div:nth-child(1),
-    .sidebar1 > div:nth-child(2) {
+    .sidebar1>div:nth-child(1),
+    .sidebar1>div:nth-child(2) {
         grid-column: span 1;
         grid-row: 1;
         display: block;
     }
 
     /* 3. O Anúncio fica travado na Coluna 1, Linha 2 */
-    .sidebar1 > div.anuncio {
+    .sidebar1>div.anuncio {
         grid-column: 1;
         grid-row: 2;
         display: block;
     }
 
-  /* O CONTÊINER DE SCROLL (Aplica-se SOMENTE DO 3º ITEM EM DIANTE, EXCLUINDO O ANÚNCIO) 
+    /* O CONTÊINER DE SCROLL (Aplica-se SOMENTE DO 3º ITEM EM DIANTE, EXCLUINDO O ANÚNCIO) 
        Isso garante que o desktop NÃO seja afetado por essa regra de scroll! */
-    .sidebar1 > div:nth-child(n + 3):not(.anuncio) {
+    .sidebar1>div:nth-child(n + 4),
+    .sidebar1>div:nth-child(4)>div:nth-child(n + 2) {
         grid-column: 2;
         grid-row: 2;
-        max-height: 240px;   /* Altura exata para caber apenas 2 divs empilhadas */
-        overflow-y: auto;    /* Ativa o scroll vertical */
-        overflow-x: hidden;  /* Esconde o scroll horizontal */
-        padding-right: 5px;  
-        display: block;      
+        max-height: 240px;
+        /* Altura exata para caber apenas 2 divs empilhadas */
+        overflow-y: auto;
+        /* Ativa o scroll vertical */
+        overflow-x: hidden;
+        /* Esconde o scroll horizontal */
+        padding-right: 5px;
+        display: block;
     }
 
+
     /* Espaçamento entre cada item dentro do scroll */
-    .sidebar1 > div:nth-child(n + 3):not(.anuncio) > div {
+    .sidebar1>div:nth-child(n + 4)>div {
         margin-bottom: 5px;
     }
 }
 
 
-
-
-/* MEDIA QUERY MINHA */
-
-/* @media (max-width: 600px) {
-
-    .sidebar1 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    
-
- .sidebar1:nth-child(n + 3) { 
-	
-	flex-direction: column;
-	max-height: 320px;
-	overflow-y: scroll;
- 	overflow-x: hidden;		
-}
-
-    .sidebar1>div {
-        flex: 1 1 177px;
-        margin: 10px 0;
-    }
-
-    .sidebar1>div:nth-child(n + 3) {
-        grid-column: 2;
-        grid-row: 2;
-        max-height: 250px;
-        display: block;
-        padding-right: 5px;
-        margin-bottom: 15px;
-        
-    }
-
-    .sidebar1>div.anuncio {
-        grid-column: 1;
-        grid-row: 2;
-
-    }
-
-} */
-
-/* ***ORIGINAL*** 
-
-.grid1 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 800px;
-    padding: 10px;
-    margin: 0 auto;
-    grid-gap: 20px;
-}
-
-
-AQUI COMEÇA A MAGICA
-
-.grid1 > div:nth-child(n + 4) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    align-items: center;
-}
-
-.grid1 > div.anuncio {
-    grid-column: 1;
-    grid-row: 2 / 5;
-    display: block; /* Coloca os itens internos do anúncio em bloco verticalmente, para que ocupem toda a largura(horizontalmente) da célula do grid.
-} 
-
-
-@media (max-width: 600px) {
-.grid1 {
-    grid-template-columns: repeat(2, 1fr); /* reduz o número de colunas para 2 
-}
-
-.sidebar1
-
-
-.grid1 > div:nth-child(n + 4) {
-    display: block; /* remove o grid interno para os itens a partir do 4º 
-}
-
-
-.grid1 > div.anuncio {
-    grid-column: auto;
-    grid-row: auto;
-    order: -1; /* move o anúncio para o início da lista 
-}
-
-.sidebar1 > div.anuncio {
-    grid-column: auto;
-    grid-row: auto;
-    order: -1;
-}
-
-}
-*/
 
 
 
