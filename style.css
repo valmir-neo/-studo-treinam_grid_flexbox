@@ -138,8 +138,17 @@ img,
 
 .sidebar1>div.anuncio {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 2 / 5;
     display: block;
+}
+
+.scroll-column>div:nth-child(n + 2) {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+
 }
 
 /* --- 2. CONFIGURAÇÃO PARA DISPOSITIVOS MÓVEIS (MOBILE) --- */
@@ -153,6 +162,12 @@ img,
         grid-gap: 15px;
     }
 
+    .sidebar1>div.anuncio {
+        grid-column: 1;
+        grid-row: 2;
+        display: block;
+    }
+
     .scroll-column {
         /* No mobile, ele volta a existir visualmente e ganha o scroll que você precisa! */
         display: flex;
@@ -160,7 +175,7 @@ img,
         flex-direction: column;
         /* se for scroll horizontal, por exemplo */
         overflow-y: auto;
-        max-height: 240px;
+        max-height: 253px;
         /* altura máxima para acionar o scroll se for vertical */
         gap: 5px;
         padding: 7px 10px;
@@ -168,7 +183,11 @@ img,
 
 }
 
-
+.scroll-column>div:nth-child(n + 2) {
+    display: contents;
+    gap: 4px;
+    padding: 0 10px 15px;
+}
 
 
 
