@@ -120,18 +120,20 @@ img,
 
 .sidebar1 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* Seu layout grid na avó */
+    grid-template-columns: repeat(3, 1fr);
+    /* Seu layout grid na avó */
     grid-gap: 15px;
     max-width: 800px;
     padding: 10px;
-    margin: 0 auto; /* Garante o que o contêiner se alinhará no meio horizontal */
-    
+    margin: 0 auto;
+    /* Garante o que o contêiner se alinhará no meio horizontal */
+
 }
 
 .scroll-column {
-  /* No desktop, tiramos qualquer restrição de scroll e fazemos ele sumir 
+    /* No desktop, tiramos qualquer restrição de scroll e fazemos ele sumir 
      do layout visual, deixando as divs netas ocuparem a div avó diretamente */
-  display: contents; 
+    display: contents;
 }
 
 .sidebar1>div.anuncio {
@@ -143,12 +145,27 @@ img,
 /* --- 2. CONFIGURAÇÃO PARA DISPOSITIVOS MÓVEIS (MOBILE) --- */
 
 @media (max-width: 600px) {
-  
+
     .sidebar1 {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 1. Transforma a sidebar em um grid de 2 colunas no celular */
+        grid-template-columns: repeat(2, 1fr);
+        /* 1. Transforma a sidebar em um grid de 2 colunas no celular */
         grid-gap: 15px;
     }
+
+    .scroll-column {
+        /* No mobile, ele volta a existir visualmente e ganha o scroll que você precisa! */
+        display: flex;
+        /* ou block */
+        flex-direction: column;
+        /* se for scroll horizontal, por exemplo */
+        overflow-y: auto;
+        max-height: 240px;
+        /* altura máxima para acionar o scroll se for vertical */
+        gap: 5px;
+        padding: 7px 10px;
+    }
+
 }
 
 
